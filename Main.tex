@@ -1,0 +1,87 @@
+% AER-Article.tex for AEA last revised 22 June 2011
+\documentclass[AER,draftmode]{AEA}
+
+% The mathtime package uses a Times font instead of Computer Modern.
+% Uncomment the line below if you wish to use the mathtime package:
+%\usepackage[cmbold]{mathtime}
+% Note that miktex, by default, configures the mathtime package to use commercial fonts
+% which you may not have. If you would like to use mathtime but you are seeing error
+% messages about missing fonts (mtex.pfb, mtsy.pfb, or rmtmi.pfb) then please see
+% the technical support document at http://www.aeaweb.org/templates/technical_support.pdf
+% for instructions on fixing this problem.
+
+% Note: you may use either harvard or natbib (but not both) to provide a wider
+% variety of citation commands than latex supports natively. See below.
+
+% Uncomment the next line to use the natbib package with bibtex 
+\usepackage{natbib}
+
+% Uncomment the next line to use the harvard package with bibtex
+%\usepackage[abbr]{harvard}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{pdflscape}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{adjustbox}
+
+
+\usepackage[para,flushleft]{threeparttable}
+\usepackage[labelsep = period]{caption}
+%\usepackage[hidelinks]{hyperref} %probably nicer option in print (and comment out hypersetup)
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+% This command determines the leading (vertical space between lines) in draft mode
+% with 1.5 corresponding to "double" spacing.
+\draftSpacing{1.5}
+
+% New definitions
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+
+\begin{document}
+
+\title{Employment and Turnover Effects of the German National Minimum Wage: A Sectoral Analysis}
+\shortTitle{Employment Effects of the German NMW}
+\author{Dirk Czarnitzki and Helena Kreuter and Jesse Wursten\thanks{Czarnitzki: Centre for European Economic Research (ZEW), Mannheim, Germany. Kreuter: IMT School for Advanced Studies, Lucca, Italy. Wursten: KU Leuven, Naamsestraat 69, 3000 Leuven, Belgium (email: jesse.wursten@kuleuven.be). The authors gratefully acknowledges financial support of the Research Foundation Flanders (FWO) under grant number 1125818N.}}
+\date{\today}
+\pubMonth{}
+\pubYear{}
+\JEL{J38, D22}
+\Keywords{minimum wage, labour policy, employment elasticity, German national minimum wage, matching estimators, firm level data}
+
+\begin{abstract}
+Germany introduced a national minimum wage of €8.50 in 2015. We compare firms in affected sectors to those in unaffected ones using proprietary firm level data. We match on past employment and forward looking creditratings and find only very small negative employment effects (0.014\% of overall employment, ~20 000 jobs lost) and positive effects on turnover in local service sectors. Given Germany's highly developed economy, we believe these results are of interest to the wider, US-centric, minimum wage debate.
+\end{abstract}
+
+
+\maketitle
+\input{./Chapters/1introduction}
+%\input{./Chapters/2literature}
+\input{./Chapters/3data}
+%\input{./Chapters/4optional}
+%\input{./Chapters/5estimation}
+\input{./Chapters/6results}
+\input{./Chapters/7discussion}
+\input{./Chapters/8robustness}
+\input{./Chapters/90conclusion}
+
+
+
+% Remove or comment out the next two lines if you are not using bibtex.
+\bibliographystyle{aea}
+\bibliography{MW_bib}
+
+\appendix
+\input{./Chapters/99appendix}
+
+
+\end{document}
+

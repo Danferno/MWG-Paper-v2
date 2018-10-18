@@ -1,0 +1,60 @@
+\section{Robustness Checks} \label{chap:robustness}
+Our proprietary firm level dataset allows us to match treated firms directly to non-treated firms, taking into account both their employment trends and their prospective financial situation. This combination of backwards and forwards looking matching variables makes that we can be more confident in our parallel trend assumption than the difference-in-differences approaches commonly applied. Moreover, unlike the geographic aggregate based studies in the US, we can differentiate effects based on firm size. However, in contrast to survey-based data (e.g. the IAB Establishment Panel), we cannot directly identify whether a firm paid any of its employees less than €8.50 per hour. Instead, we assign treatment status based on their sector classification, determining whether sectors are affected based on data from the SOEP, setting thresholds based on economic intuition. In this section, we first test the sensitivity of our results to the choice of these thresholds and then test whether they hold when we add all Italian firms as potential controls.
+
+\subsection{Different thresholds}\label{sec:sectors}
+% Robustness Check (Tw)
+\begin{table}[htbp]\centering
+\caption{Employment effects within Germany, alternative thresholds}\label{table:robustness1}
+\begin{tabular}{l|*{2}{c}|*{2}{c}|*{2}{c}}
+\toprule
+&\multicolumn{2}{c|}{OLS}&\multicolumn{2}{c|}{Baseline}&\multicolumn{2}{c}{Without CR}\\
+&All & Resto &All & Resto &All & Resto \\
+&(1)&(2)&(3)&(4)&(5)&(6)\\
+\midrule
+Employment effect & -0.002 & 0.046 & 0.002 & 0.034 & -0.001 & 0.039   \\
+2014-15 & (0.002) & (0.009)\sym{***}& (0.003) & (0.011)\sym{***} & (0.002) & (0.009)\sym{***} \\
+Employment effect & -0.004 & 0.068 & -0.003 & 0.068 & -0.003 & 0.062   \\
+2014-16 & (0.003) & (0.012)\sym{***}& (0.004) & (0.015)\sym{***} & (0.003) & (0.013)\sym{***} \\
+\midrule
+N&&&&&&\\
+\# of treated & 31773 & 2127 & 29532 & 1872 & 31773 & 2127     \\
+\# of controls & 96553 & 96553 & 90017 & 90017 & 96553 & 96553    \\
+\# of controls used & 84752 & 64600 & 33064 & 4602 & 84752 & 64600       \\
+\bottomrule
+\multicolumn{7}{p{0.7\textwidth}}{\emph{Stars}: \sym{*} \(p<0.1\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+\end{table}
+
+
+In the baseline results, firms were split into three groups based on the share of employees earning less than €8.50 an hour in 2013-14. The thresholds, at 10 and 30\%, were quite strict to ensure a clear distinction into treated and control. As an alternative, we shift these limits to 15 and 25\%. This should reduce the variance of our estimate (as we have more data), but comes with the risk of introducing attenuation bias as (more) firms will now be assigned to the wrong treatment status.\footnote{Essentially, we introduce measurement error in the treatment variable, which would be our independent variable if we were in a standard regression framework.}
+
+Table \ref{table:robustness1} shows the results with the laxer treatment assignment. Compared to the main results (Table \ref{table:mainResults}), the estimate have become more precise, with standard errors slightly decreasing across the board. The overall coefficient estimates have moved closer to zero, which is consistent with the attenuation bias story, but also highlights the fragility of the negative employment effect, which was small to be begin with. On the contrary, the positive effect in the restaurant sector remains unaffected, indicating that result is not driven by the choice of control firms.
+
+\subsection{Italian control firms}\label{sec:italy}
+% Robustness Check (Italy)
+% Run 2_Regressions_firmLevel, with the generateTables option set. Uncomment >local italianTable "useItaly == 1"<. Remove middle columns.
+\begin{table}[htbp]\centering
+\caption{Employment effects with Italian control firms}\label{table:robustness2}
+\begin{tabular}{l|*{2}{c}|*{2}{c}}
+\toprule
+&\multicolumn{2}{c|}{OLS}&\multicolumn{2}{c}{Matching (Without CR)}\\
+&All & Resto &All & Resto \\
+&(1)&(2)&(3)&(4)\\
+\midrule
+Employment effect & 0.011 & 0.046 & 0.004 & 0.030   \\
+2014-15 & (0.003)\sym{***} & (0.008)\sym{***} & (0.003) & (0.008)\sym{***} \\
+Employment effect & 0.028 & 0.094 & 0.016 & 0.066   \\
+2014-16 & (0.004)\sym{***} & (0.011)\sym{***} & (0.004)\sym{***} & (0.011)\sym{***} \\
+\midrule
+N&&&&\\
+\# of treated & 11846 & 2030  & 11846 & 2030     \\
+\# of controls & 293259 & 293259  & 293259 & 293259    \\
+\# of controls used & 227868 & 158006  & 227868 & 158006       \\
+\bottomrule
+\multicolumn{5}{p{0.7\textwidth}}{\emph{Stars}: \sym{*} \(p<0.1\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+\end{table}
+
+In the second robustness check, we swap the donor pool to all Italian firms. Italy did not experience any significant movement in its (sector level) minimum wages in the time period studied and is the fourth largest economy in Europe (after Germany, the UK and France). The Italian data was obtained through AIDA, an oft-used database compiled by Bureau van Dijk. Due to the more demanding accounting requirements in Italy, the database is rather comprehensive, especially with regards to employment numbers and much more so than its German counterpart Dafne. Unfortunately, it does not contain credit ratings, so we are limited to matching on past employment (2012-2014).
+
+As shown in Table (A??) in the appendix there are considerable differences between the treated German firms and the untreated Italian firms. As a result, we do not put much stock in the naive OLS results reported in columns (1) and (2) of Table \ref{table:robustness2} and move straight to the matching estimators in columns (3) and (4). As in the previous robustness check, we notice how fragile the negative overall effect is - now, we even find a significantly positive effect, although the effect size remains small at 1.6\%. The positive effect in the restaurant sector stays robust with coefficient estimates (3\% in 2015, up to 6.6\% in 2016) that are remarkably similar to the previous results despite the completely different set of control firms.
